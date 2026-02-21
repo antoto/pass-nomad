@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOMAD Explorer - Terminales 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+        body { font-family: 'Space Grotesk', sans-serif; background: #050505; color: #e2e8f0; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .hero-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #581c87 100%); }
+        .hidden-section { display: none; }
+        #modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); cursor: zoom-out; }
+        #modal img { max-width: 98%; max-height: 90%; margin: auto; display: block; position: relative; top: 50%; transform: translateY(-50%); border: 1px solid #444; }
+        
+        /* Structure de la Timeline */
+        .timeline { position: relative; padding-left: 30px; border-left: 2px solid #3b82f6; margin-left: 10px; }
+        .timeline-point { position: relative; margin-bottom: 20px; }
+        .timeline-point::before { content: ''; position: absolute; left: -37px; top: 4px; width: 12px; height: 12px; background: #050505; border: 2px solid #3b82f6; border-radius: 50%; }
+        
+        .train-card { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.3); margin: 10px 0 20px 0; }
+        .step-card { border-left: 3px solid #3b82f6; padding-left: 1.5rem; position: relative; margin-bottom: 2rem; }
+        .step-card::before { content: ''; position: absolute; left: -9px; top: 0; width: 15px; height: 15px; background: #3b82f6; border-radius: 50%; box-shadow: 0 0 10px #3b82f6; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <div id="modal" onclick="this.style.display='none'">
+        <img id="modalImg" src="">
+        <p class="text-center text-gray-500 mt-4 text-xs">TOUCHER POUR FERMER</p>
+    </div>
+
+    <header class="hero-gradient p-10 text-center rounded-b-[3rem] shadow-2xl mb-8">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tighter mb-2 italic uppercase">Expédition 21 Avril</h1>
+        <p class="text-blue-100 opacity-80 uppercase tracking-widest text-xs font-bold font-mono">Rives-en-Seine ➜ Rouen ➜ Nomad</p>
+    </header>
+
+    <section class="px-4 max-w-2xl mx-auto mb-10">
+        <div class="glass p-6 rounded-3xl border-l-4 border-yellow-500 shadow-[0_0_20px_rgba(234,179,8,0.1)]">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-yellow-500 italic">
+                <i class="fa-solid fa-shield-halved"></i> Logistique "Zéro Stress"
+            </h2>
+            
+            <div class="grid grid-cols-3 gap-2 text-sm mb-6">
+                <div class="bg-white/5 p-3 rounded-xl text-center border border-white/5">
+                    <p class="text-gray-400 text-[10px] uppercase font-bold">Départ Maison</p>
+                    <p class="font-bold text-base text-yellow-500">05h15</p>
+                </div>
+                <div class="bg-white/5 p-3 rounded-xl text-center border border-white/5">
+                    <p class="text-gray-400 text-[10px] uppercase font-bold">P+R Riboudet</p>
+                    <p class="font-bold text-base">06h00</p>
+                </div>
+                <div class="bg-emerald-500/20 p-3 rounded-xl text-center border border-emerald-500/40">
+                    <p class="text-emerald-400 text-[10px] uppercase font-bold">Check-in Gare</p>
+                    <p class="font-bold text-base text-white">06h54</p>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-900/50 rounded-xl text-sm border border-white/10 space-y-4">
+                <p class="font-bold text-blue-400 underline italic text-xs uppercase tracking-wider text-center">Calcul des marges (Anticipation 100%) :</p>
+                
+                <div class="grid grid-cols-1 gap-3 text-[11px]">
+                    <div class="flex justify-between border-b border-white/5 pb-1">
+                        <span class="text-gray-400">🚗 Trajet + Marge Parking :</span>
+                        <span class="font-mono">45 min</span>
+                    </div>
+                    <div class="flex justify-between border-b border-white/5 pb-1">
+                        <span class="text-gray-400">🚶 Accès quais + Attente TEOR :</span>
+                        <span class="font-mono">15 min</span>
+                    </div>
+                    <div class="flex justify-between border-b border-white/5 pb-1">
+                        <span class="text-gray-400">🚌 TEOR (Riboudet ➜ Théâtre) :</span>
+                        <span class="font-mono">15 min</span>
+                    </div>
+                    <div class="flex justify-between border-b border-white/5 pb-1">
+                        <span class="text-gray-400">🚇 Attente + Trajet Métro :</span>
+                        <span class="font-mono">20 min</span>
+                    </div>
+                    <div class="flex justify-between text-emerald-400 font-bold">
+                        <span>⌛ Marge de sécurité sur quai :</span>
+                        <span class="font-mono">15 min</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 flex flex-col items-center gap-1 bg-red-950/40 p-3 rounded-lg border border-red-500/30">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-train-subway text-red-500 animate-pulse"></i>
+                    <p class="text-xs text-red-400 font-black uppercase tracking-widest text-center">Départ Train : 07h09</p>
+                </div>
+                <p class="text-[9px] text-red-500/80 italic font-bold text-center">Fermeture des portes imminente à 07h07 !</p>
+            </div>
+        </div>
+    </section>
+    <div class="px-4 grid grid-cols-2 gap-4 max-w-2xl mx-auto mb-12">
+        <button onclick="show('deauville')" class="bg-blue-600 p-6 rounded-3xl font-bold text-lg shadow-lg hover:scale-105 transition border border-white/10">🌊 DEAUVILLE</button>
+        <button onclick="show('caen')" class="bg-purple-600 p-6 rounded-3xl font-bold text-lg shadow-lg hover:scale-105 transition border border-white/10">🏰 CAEN</button>
+    </div>
+
+    <div id="deauville" class="hidden-section px-4 max-w-3xl mx-auto space-y-8">
+        <div class="glass p-6 md:p-8 rounded-[2rem] border-t-4 border-blue-500">
+            <h2 class="text-3xl font-bold text-blue-400 mb-8 italic">Mission Deauville-Beach</h2>
+            
+            <div class="mb-12">
+                <h3 class="text-xs font-bold text-gray-400 uppercase mb-6 tracking-widest italic border-b border-white/10 pb-2">🗺️ Feuille de route Aller</h3>
+                
+                <div class="timeline">
+                    <div class="timeline-point">
+                        <p class="text-sm font-bold italic">Rouen Rive Droite <span class="text-blue-400 ml-2">07:09</span></p>
+                    </div>
+                    
+                    <div class="train-card">
+                        <p class="text-[10px] text-blue-300 mb-2 font-bold uppercase tracking-tighter">Train 1 : Rouen ➜ Lisieux (Court)</p>
+                        <img src="Compo train/comp_deauville_aller1.png" onclick="zoom(this.src)" class="rounded-lg w-full cursor-pointer hover:opacity-80 transition">
+                    </div>
+
+                    <div class="timeline-point">
+                        <p class="text-sm font-bold italic">Lisieux <span class="text-gray-400 text-xs">(8:19 Arrivée)</span></p>
+                        <p class="text-[10px] text-yellow-500 font-bold">Battement : 18 min</p>
+                    </div>
+
+                    <div class="timeline-point">
+                        <p class="text-sm font-bold italic">Lisieux <span class="text-blue-400 ml-2">08:37 Départ</span></p>
+                    </div>
+
+                    <div class="train-card">
+                        <p class="text-[10px] text-blue-300 mb-2 font-bold uppercase tracking-tighter">Train 2 : Lisieux ➜ Deauville (Long ★)</p>
+                        <img src="Compo train/comp_deauville_aller2.png" onclick="zoom(this.src)" class="rounded-lg w-full cursor-pointer hover:opacity-80 transition">
+                    </div>
+
+                    <div class="timeline-point">
+                        <p class="text-sm font-bold text-blue-400">Gare Deauville <span class="ml-2 italic text-white">09:07</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4 mb-12">
+                <div class="step-card">
+                    <p class="font-bold text-lg underline italic text-blue-200">Matin : Flex aux Planches</p>
+                    <p class="text-sm text-gray-400 italic">Photos avec les parasols et les cabines de stars. On kiffe le vent marin.</p>
+                </div>
+                <div class="step-card">
+                    <p class="font-bold text-lg underline italic text-blue-200">Midi : Picnic sur le sable</p>
+                    <p class="text-sm text-gray-300 font-bold">On s'installe sur la plage. Sandwichs, chips et kiff total face au large.</p>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                <h3 class="text-xs font-bold text-gray-400 uppercase mb-6 tracking-widest italic border-b border-white/10 pb-2">🗺️ Feuille de route Retour</h3>
+                
+                <div class="timeline" style="border-left-color: #6366f1;">
+                    <div class="timeline-point" style="border-color: #6366f1;">
+                        <p class="text-sm font-bold italic">Gare Deauville <span class="text-indigo-400 ml-2">18:01</span></p>
+                    </div>
+
+                    <div class="train-card" style="border-color: rgba(99, 102, 241, 0.3);">
+                        <p class="text-[10px] text-indigo-300 mb-2 font-bold uppercase tracking-tighter">Train 1 : Deauville ➜ Lisieux (Long)</p>
+                        <img src="Compo train/comp_deauville_retour1.png" onclick="zoom(this.src)" class="rounded-lg w-full cursor-pointer hover:opacity-80 transition">
+                    </div>
+
+                    <div class="timeline-point">
+                        <p class="text-sm font-bold italic">Lisieux <span class="text-gray-400 text-xs">(18:32 Arrivée)</span></p>
+                        <p class="text-[10px] text-yellow-500 font-bold uppercase">Snack Time : 1h12 de pause</p>
+                    </div>
+
+                    <div class="timeline-point">
+                        <p class="text-sm font-bold italic">Lisieux <span class="text-indigo-400 ml-2">19:44 Départ</span></p>
+                    </div>
+
+                    <div class="train-card" style="border-color: rgba(99, 102, 241, 0.3);">
+                        <p class="text-[10px] text-indigo-300 mb-2 font-bold uppercase tracking-tighter">Train 2 : Lisieux ➜ Rouen (Court)</p>
+                        <img src="Compo train/comp_deauville_retour2.png" onclick="zoom(this.src)" class="rounded-lg w-full cursor-pointer hover:opacity-80 transition">
+                    </div>
+
+                    <div class="timeline-point">
+                        <p class="text-sm font-bold text-indigo-400">Rouen Rive Droite <span class="ml-2 italic text-white">20:56</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="caen" class="hidden-section px-4 max-w-3xl mx-auto space-y-8">
+        <div class="glass p-6 md:p-8 rounded-[2rem] border-t-4 border-purple-500">
+            <h2 class="text-3xl font-bold text-purple-400 mb-6 italic">Mission Caen-City</h2>
+
+            <div class="mb-10">
+                <h3 class="text-xs font-bold text-gray-400 uppercase mb-4 tracking-widest text-center italic">🚂 Trajet Aller Direct</h3>
+                <div class="flex justify-between items-center text-sm font-bold px-2 mb-4 bg-white/5 p-4 rounded-xl">
+                    <span>Rouen <span class="text-purple-400">07:09</span></span>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Sans arrêt</span>
+                    <span>Caen <span class="text-purple-400">08:48</span></span>
+                </div>
+                <div class="train-card" style="border-color: rgba(168, 85, 247, 0.3);">
+                    <img src="Compo train/comp_caen_aller.png" onclick="zoom(this.src)" class="rounded-lg w-full cursor-pointer">
+                </div>
+            </div>
+
+            <div class="space-y-4 mb-10">
+                <div class="step-card" style="border-color:#a855f7">
+                    <p class="font-bold text-lg underline italic text-purple-200">Matin : Les Remparts</p>
+                    <p class="text-sm text-gray-400 italic">Vue panoramique depuis le Château. On domine toute la ville.</p>
+                </div>
+                <div class="step-card" style="border-color:#a855f7">
+                    <p class="font-bold text-lg underline italic text-purple-200">Midi : Picnic QG</p>
+                    <p class="text-sm text-gray-300 font-bold">Pique-nique sur l'herbe au milieu du château. Ambiance 100% étudiante.</p>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center italic border-b border-white/10 pb-2">🚂 3 Choix pour le Retour</h3>
+                <div class="train-card" style="border-color: rgba(168, 85, 247, 0.2);">
+                    <p class="text-[10px] uppercase font-bold text-gray-400 mb-2">Option A : 17:04 ➜ 18:47</p>
+                    <img src="Compo train/comp_caen_retour.png" onclick="zoom(this.src)" class="h-10 w-full object-contain cursor-pointer grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition">
+                </div>
+                <div class="train-card" style="border-color: rgba(168, 85, 247, 0.2);">
+                    <p class="text-[10px] uppercase font-bold text-gray-400 mb-2">Option B : 18:03 ➜ 19:42</p>
+                    <img src="Compo train/comp_caen_retour.png" onclick="zoom(this.src)" class="h-10 w-full object-contain cursor-pointer grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition">
+                </div>
+                <div class="train-card border-2 border-purple-500/50 bg-purple-900/10">
+                    <p class="text-[10px] uppercase font-bold text-purple-400 mb-2">Option C (Max) : 19:16 ➜ 20:56 ★</p>
+                    <img src="Compo train/comp_caen_retour.png" onclick="zoom(this.src)" class="h-12 w-full object-contain cursor-pointer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function show(id) {
+            document.getElementById('deauville').classList.add('hidden-section');
+            document.getElementById('caen').classList.add('hidden-section');
+            document.getElementById(id).classList.remove('hidden-section');
+            window.scrollTo({ top: document.querySelector('#' + id).offsetTop - 20, behavior: 'smooth' });
+        }
+        function zoom(src) {
+            document.getElementById('modalImg').src = src;
+            document.getElementById('modal').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
