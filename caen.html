@@ -1,0 +1,101 @@
+<div id="caen" class="hidden-section px-4 max-w-3xl mx-auto">
+    <div class="card bg-[#1a1a1a] text-white p-6 rounded-[2rem] shadow-xl border border-purple-500/20">
+        <h2 class="text-2xl font-bold text-purple-400 mb-8 italic">🕒 LE PLANNING CAEN</h2>
+
+        <p class="text-purple-300 font-black text-sm mb-4 tracking-wider uppercase">MATIN : Médiéval & Panorama</p>
+        
+        <div class="step border-l-2 border-purple-500/30 pl-6 pb-6 relative">
+            <span class="time absolute -left-[35px] bg-purple-600 text-[10px] px-2 py-1 rounded font-bold">07h09</span>
+            <div class="step-content">
+                Départ Rouen Rive-Droite 🚆 <span class="badge bg-purple-500/20 text-purple-300">Direct</span>
+                <img src="compo-train/comp_caen_aller.png" class="w-full rounded-xl mt-3 border border-white/10" onclick="zoom(this.src)">
+            </div>
+        </div>
+
+        <div class="step border-l-2 border-purple-500/30 pl-6 pb-6 relative">
+            <span class="time absolute -left-[35px] bg-purple-600 text-[10px] px-2 py-1 rounded font-bold">08h48</span>
+            <div class="step-content">Arrivée Gare de Caen</div>
+        </div>
+
+        <div class="step border-l-2 border-purple-500/30 pl-6 pb-6 relative">
+            <span class="time absolute -left-[35px] bg-gray-700 text-[10px] px-2 py-1 rounded font-bold">09h15</span>
+            <div class="step-content">
+                <strong>Quartier Vaugueux</strong> (15 min de marche)<br>
+                <small class="text-gray-400 italic text-xs">Le spot "Harry Potter" : maisons à pans de bois et rues pavées.</small>
+            </div>
+        </div>
+
+        <div class="step border-l-2 border-purple-500/30 pl-6 pb-8 relative">
+            <span class="time absolute -left-[35px] bg-gray-700 text-[10px] px-2 py-1 rounded font-bold">10h00</span>
+            <div class="step-content">
+                <strong>Château de Caen</strong> 🏰
+                <img src="chateau-caen.jpg" class="w-full rounded-xl mt-2 border border-white/10" onclick="zoom(this.src)">
+                <small class="text-gray-400 text-xs italic">Montée sur les remparts (Gratuit). Vue 360° sur toute la ville.</small>
+            </div>
+        </div>
+
+        <p class="text-blue-300 font-black text-sm mb-4 tracking-wider uppercase">MIDI : L'EXPÉDITION MER (11h30 — 14h00)</p>
+
+        <div class="step border-l-2 border-blue-500/30 pl-6 pb-6 relative">
+            <span class="time absolute -left-[35px] bg-blue-600 text-[10px] px-2 py-1 rounded font-bold">11h15</span>
+            <div class="step-content">
+                Bus Ligne 12 EXPRESS 🚌 <span class="badge bg-blue-500/20 text-blue-300">1,60€</span><br>
+                <small class="text-gray-400 text-xs">Arrêt "Tour Leroy" ➔ Ouistreham Riva-Bella (35 min)</small>
+            </div>
+        </div>
+
+        <div class="step border-l-2 border-emerald-500/30 pl-6 pb-8 relative">
+            <span class="time absolute -left-[35px] bg-emerald-600 text-[10px] px-2 py-1 rounded font-bold">12h00</span>
+            <div class="step-content">
+                <strong>Pique-nique à Ouistreham</strong> 🏖️
+                <img src="ouistreham-beach.jpg" class="w-full rounded-xl mt-2 border border-white/10" onclick="zoom(this.src)">
+                <small class="text-gray-400 text-xs italic">Installation près du phare rouge et blanc. Chill face aux ferries.</small>
+            </div>
+        </div>
+
+        <p class="text-yellow-300 font-black text-sm mb-4 tracking-wider uppercase">APRÈS-MIDI : Phare & Riva-Bella</p>
+
+        <div class="step border-l-2 border-yellow-500/30 pl-6 pb-6 relative">
+            <span class="time absolute -left-[35px] bg-yellow-600 text-[10px] px-2 py-1 rounded font-bold">14h30</span>
+            <div class="step-content">
+                <strong>Avenue de la Mer & Jetée</strong><br>
+                <small class="text-gray-400 text-xs">Boutiques, gaufres et marche jusqu'au bout de la jetée en bois.</small>
+            </div>
+        </div>
+
+        <p class="text-red-400 font-black text-sm mb-4 tracking-wider uppercase italic">SOIR : 3 OPTIONS DE RETOUR</p>
+
+        <div class="grid grid-cols-1 gap-4 mb-8">
+            <div class="p-4 bg-white/5 border border-white/10 rounded-2xl relative">
+                <span class="absolute top-2 right-4 text-[10px] text-gray-500 font-bold uppercase tracking-widest italic">Option A</span>
+                <p class="text-white font-bold text-lg">17:04 <span class="text-xs text-gray-500">➜</span> 18h47</p>
+                <p class="text-[10px] text-gray-500 italic">Retour direct. Pas de bonus.</p>
+            </div>
+
+            <div class="p-4 bg-purple-900/10 border border-purple-500/30 rounded-2xl relative">
+                <span class="absolute top-2 right-4 text-[10px] text-purple-400 font-bold uppercase tracking-widest italic font-black">Option B (+1h)</span>
+                <p class="text-white font-bold text-lg">18:03 <span class="text-xs text-gray-500">➜</span> 19h42</p>
+                <div class="mt-2 p-3 bg-black/30 rounded-xl border border-purple-500/20">
+                    <p class="text-[11px] text-purple-200 font-bold">💡 BONUS : BASSIN ST-PIERRE</p>
+                    <p class="text-[10px] text-gray-400 leading-tight mt-1">On se pose sur le port de plaisance (centre-ville). C'est hyper chill pour un dernier verre en terrasse.</p>
+                </div>
+            </div>
+
+            <div class="p-4 bg-purple-500/20 border-2 border-purple-500 rounded-2xl relative shadow-[0_0_20px_rgba(168,85,247,0.15)]">
+                <span class="absolute top-2 right-4 text-[10px] text-white font-bold uppercase tracking-widest italic font-black">Option C (+2h) ★</span>
+                <p class="text-white font-bold text-lg">19:16 <span class="text-xs text-gray-500">➜</span> 20h56</p>
+                <div class="mt-2 p-3 bg-black/40 rounded-xl border border-white/10">
+                    <p class="text-[11px] text-purple-100 font-bold italic">💡 BONUS : LES RIVES DE L'ORNE</p>
+                    <p class="text-[10px] text-gray-400 leading-tight mt-1">Coucher de soleil sur les quais de l'Orne. Centre à ciel ouvert juste devant la gare pour finir la journée en beauté.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step border-l-2 border-red-500/30 pl-6 pb-2 relative">
+            <span class="time absolute -left-[35px] bg-red-600 text-[10px] px-2 py-1 rounded font-bold italic">FIN</span>
+            <div class="step-content">
+                <img src="compo-train/comp_caen_retour.png" class="w-full rounded-xl mt-2 opacity-80" onclick="zoom(this.src)">
+            </div>
+        </div>
+    </div>
+</div>
