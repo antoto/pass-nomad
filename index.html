@@ -15,7 +15,7 @@
         #modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); cursor: zoom-out; }
         #modal img { max-width: 98%; max-height: 90%; margin: auto; display: block; position: relative; top: 50%; transform: translateY(-50%); border: 1px solid #444; }
         
-        /* Structure de la Timeline */
+        /* Structure de la Timeline Deauville */
         .timeline { position: relative; padding-left: 30px; border-left: 2px solid #3b82f6; margin-left: 10px; }
         .timeline-point { position: relative; margin-bottom: 20px; }
         .timeline-point::before { content: ''; position: absolute; left: -37px; top: 4px; width: 12px; height: 12px; background: #050505; border: 2px solid #3b82f6; border-radius: 50%; }
@@ -23,6 +23,12 @@
         .train-card { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.3); margin: 10px 0 20px 0; }
         .step-card { border-left: 3px solid #3b82f6; padding-left: 1.5rem; position: relative; margin-bottom: 2rem; }
         .step-card::before { content: ''; position: absolute; left: -9px; top: 0; width: 15px; height: 15px; background: #3b82f6; border-radius: 50%; box-shadow: 0 0 10px #3b82f6; }
+
+        /* NOUVELLES CLASSES POUR CAEN (AJUSTÉES POUR ÉVITER LE DÉBORDEMENT) */
+        .step { position: relative; margin-bottom: 1.5rem; }
+        /* On réduit le décalage à -45px et on s'assure que le texte est centré */
+        .time-badge { position: absolute; left: -52px; top: 0; width: 42px; text-align: center; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-weight: bold; }
     </style>
 </head>
 <body class="pb-20">
@@ -94,6 +100,7 @@
             </div>
         </div>
     </section>
+
     <div class="px-4 grid grid-cols-2 gap-4 max-w-2xl mx-auto mb-12">
         <button onclick="show('deauville')" class="bg-blue-600 p-6 rounded-3xl font-bold text-lg shadow-lg hover:scale-105 transition border border-white/10">🌊 DEAUVILLE</button>
         <button onclick="show('caen')" class="bg-purple-600 p-6 rounded-3xl font-bold text-lg shadow-lg hover:scale-105 transition border border-white/10">🏰 CAEN</button>
@@ -115,38 +122,106 @@
                         <p class="text-[10px] text-blue-300 mb-2 font-bold uppercase tracking-tighter">Train 1 : Rouen ➜ Lisieux (Court)</p>
                         <img src="Compo train/comp_deauville_aller1.png" onclick="zoom(this.src)" class="rounded-lg w-full cursor-pointer hover:opacity-80 transition">
                     </div>
-
+    
                     <div class="timeline-point">
                         <p class="text-sm font-bold italic">Lisieux <span class="text-gray-400 text-xs">(8:19 Arrivée)</span></p>
                         <p class="text-[10px] text-yellow-500 font-bold">Battement : 18 min</p>
                     </div>
-
+    
                     <div class="timeline-point">
                         <p class="text-sm font-bold italic">Lisieux <span class="text-blue-400 ml-2">08:37 Départ</span></p>
                     </div>
-
+    
                     <div class="train-card">
                         <p class="text-[10px] text-blue-300 mb-2 font-bold uppercase tracking-tighter">Train 2 : Lisieux ➜ Deauville (Long ★)</p>
                         <img src="Compo train/comp_deauville_aller2.png" onclick="zoom(this.src)" class="rounded-lg w-full cursor-pointer hover:opacity-80 transition">
                     </div>
-
+    
                     <div class="timeline-point">
                         <p class="text-sm font-bold text-blue-400">Gare Deauville <span class="ml-2 italic text-white">09:07</span></p>
                     </div>
                 </div>
             </div>
-
-            <div class="space-y-4 mb-12">
-                <div class="step-card">
-                    <p class="font-bold text-lg underline italic text-blue-200">Matin : Flex aux Planches</p>
-                    <p class="text-sm text-gray-400 italic">Photos avec les parasols et les cabines de stars. On kiffe le vent marin.</p>
+    
+            <div class="space-y-8 mb-12">
+                <h3 class="text-xs font-bold text-gray-400 uppercase mb-2 tracking-widest italic border-b border-white/10 pb-2 text-center">
+                    🗺️ Roadbook de la journée
+                </h3>
+    
+                <div class="relative pl-8 border-l-2 border-blue-500/30 ml-2">
+                    <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-blue-500 shadow-[0_0_10px_#3b82f6]"></div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-blue-600 text-white text-[11px] font-bold px-2 py-1 rounded-md">09:15</span>
+                        <span class="text-gray-400 text-[10px] italic"><i class="fa-solid fa-person-walking"></i> 15 min</span>
+                    </div>
+                    <div class="glass p-4 rounded-2xl border border-white/10">
+                        <p class="font-bold text-blue-100 uppercase tracking-tight mb-1">Les Franciscaines</p>
+                        <p class="text-xs text-gray-400 leading-relaxed">Design, verrière géante et expo. C'est le spot photo de la matinée.</p>
+                        <p class="text-[10px] mt-2 font-bold text-blue-400">PRIX : GRATUIT</p>
+                    </div>
                 </div>
-                <div class="step-card">
-                    <p class="font-bold text-lg underline italic text-blue-200">Midi : Picnic sur le sable</p>
-                    <p class="text-sm text-gray-300 font-bold">On s'installe sur la plage. Sandwichs, chips et kiff total face au large.</p>
+    
+                <div class="relative pl-8 border-l-2 border-emerald-500/30 ml-2">
+                    <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-emerald-500 shadow-[0_0_10px_#10b981]"></div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-emerald-600 text-white text-[11px] font-bold px-2 py-1 rounded-md">11:30</span>
+                        <span class="text-gray-400 text-[10px] italic"><i class="fa-solid fa-person-walking"></i> 10 min</span>
+                    </div>
+                    <div class="glass p-4 rounded-2xl border border-white/10">
+                        <p class="font-bold text-emerald-100 uppercase tracking-tight mb-1">Picnic "Sea View"</p>
+                        <p class="text-xs text-gray-400 leading-relaxed">On se pose sur la plage (zone école de voile). Face à la mer, loin du bruit.</p>
+                        <p class="text-[10px] mt-2 font-bold text-emerald-400 uppercase">A prévoir : Sandwich & Boisson</p>
+                    </div>
+                </div>
+    
+                <div class="relative pl-8 border-l-2 border-yellow-500/30 ml-2">
+                    <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-yellow-500 shadow-[0_0_10px_#eab308]"></div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-yellow-600 text-white text-[11px] font-bold px-2 py-1 rounded-md">13:30</span>
+                        <span class="text-gray-400 text-[10px] italic"><i class="fa-solid fa-person-walking"></i> 15 min</span>
+                    </div>
+                    <div class="glass p-4 rounded-2xl border border-white/10">
+                        <p class="font-bold text-yellow-100 uppercase tracking-tight mb-1">Jetée & Traversée Bac</p>
+                        <p class="text-xs text-gray-400 leading-relaxed">Balade sur l'estacade puis petit bateau vers Trouville.</p>
+                        <p class="text-[10px] mt-2 font-bold text-yellow-500">PRIX : 1,50 € / PERS</p>
+                    </div>
+                </div>
+    
+                <div class="relative pl-8 border-l-2 border-purple-500/30 ml-2">
+                    <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]"></div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-purple-600 text-white text-[11px] font-bold px-2 py-1 rounded-md">14:15</span>
+                        <span class="text-gray-400 text-[10px] italic"><i class="fa-solid fa-person-walking"></i> 2 min</span>
+                    </div>
+                    <div class="glass p-4 rounded-2xl border border-white/10">
+                        <p class="font-bold text-purple-100 uppercase tracking-tight mb-1">Arcades & Vue "Serpent"</p>
+                        <p class="text-xs text-gray-400 leading-relaxed italic">Fun à Trouville : Salle de jeux Family's Games + escaliers panoramiques.</p>
+                        <p class="text-[10px] mt-2 font-bold text-purple-400 uppercase">Budget : ~10 € (Jetons)</p>
+                    </div>
+                </div>
+    
+                <div class="relative pl-8 border-l-2 border-red-500/30 ml-2">
+                    <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-red-500 shadow-[0_0_10px_#ef4444]"></div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-red-600 text-white text-[11px] font-bold px-2 py-1 rounded-md">16:45</span>
+                        <span class="text-gray-400 text-[10px] italic"><i class="fa-solid fa-person-walking"></i> 15 min</span>
+                    </div>
+                    <div class="glass p-4 rounded-2xl border border-white/10">
+                        <p class="font-bold text-red-100 uppercase tracking-tight mb-1">Goûter & Retour Gare</p>
+                        <p class="text-xs text-gray-400 leading-relaxed">On profite du port une dernière fois. Retour à pied par le pont.</p>
+                        <p class="text-[10px] mt-2 font-bold text-red-400 uppercase">Arrivée quai : 17h45</p>
+                    </div>
                 </div>
             </div>
-
+    
+            <div class="mx-4 p-4 rounded-2xl bg-gradient-to-r from-blue-900/40 to-purple-900/40 border border-white/20 shadow-lg text-center mb-12">
+                <p class="text-[10px] text-blue-300 uppercase font-black tracking-[0.2em] mb-1">Budget Activités Estimé</p>
+                <div class="flex justify-center items-baseline gap-1">
+                    <span class="text-3xl font-bold text-white">18,50</span>
+                    <span class="text-lg font-bold text-blue-400">€</span>
+                </div>
+            </div>
+    
             <div class="mt-16">
                 <h3 class="text-xs font-bold text-gray-400 uppercase mb-6 tracking-widest italic border-b border-white/10 pb-2">🗺️ Feuille de route Retour</h3>
                 
@@ -154,26 +229,26 @@
                     <div class="timeline-point" style="border-color: #6366f1;">
                         <p class="text-sm font-bold italic">Gare Deauville <span class="text-indigo-400 ml-2">18:01</span></p>
                     </div>
-
+    
                     <div class="train-card" style="border-color: rgba(99, 102, 241, 0.3);">
                         <p class="text-[10px] text-indigo-300 mb-2 font-bold uppercase tracking-tighter">Train 1 : Deauville ➜ Lisieux (Long)</p>
                         <img src="Compo train/comp_deauville_retour1.png" onclick="zoom(this.src)" class="rounded-lg w-full cursor-pointer hover:opacity-80 transition">
                     </div>
-
+    
                     <div class="timeline-point">
                         <p class="text-sm font-bold italic">Lisieux <span class="text-gray-400 text-xs">(18:32 Arrivée)</span></p>
                         <p class="text-[10px] text-yellow-500 font-bold uppercase">Snack Time : 1h12 de pause</p>
                     </div>
-
+    
                     <div class="timeline-point">
                         <p class="text-sm font-bold italic">Lisieux <span class="text-indigo-400 ml-2">19:44 Départ</span></p>
                     </div>
-
+    
                     <div class="train-card" style="border-color: rgba(99, 102, 241, 0.3);">
                         <p class="text-[10px] text-indigo-300 mb-2 font-bold uppercase tracking-tighter">Train 2 : Lisieux ➜ Rouen (Court)</p>
                         <img src="Compo train/comp_deauville_retour2.png" onclick="zoom(this.src)" class="rounded-lg w-full cursor-pointer hover:opacity-80 transition">
                     </div>
-
+    
                     <div class="timeline-point">
                         <p class="text-sm font-bold text-indigo-400">Rouen Rive Droite <span class="ml-2 italic text-white">20:56</span></p>
                     </div>
@@ -182,46 +257,107 @@
         </div>
     </div>
 
-    <div id="caen" class="hidden-section px-4 max-w-3xl mx-auto space-y-8">
-        <div class="glass p-6 md:p-8 rounded-[2rem] border-t-4 border-purple-500">
-            <h2 class="text-3xl font-bold text-purple-400 mb-6 italic">Mission Caen-City</h2>
-
-            <div class="mb-10">
-                <h3 class="text-xs font-bold text-gray-400 uppercase mb-4 tracking-widest text-center italic">🚂 Trajet Aller Direct</h3>
-                <div class="flex justify-between items-center text-sm font-bold px-2 mb-4 bg-white/5 p-4 rounded-xl">
-                    <span>Rouen <span class="text-purple-400">07:09</span></span>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Sans arrêt</span>
-                    <span>Caen <span class="text-purple-400">08:48</span></span>
-                </div>
-                <div class="train-card" style="border-color: rgba(168, 85, 247, 0.3);">
-                    <img src="Compo train/comp_caen_aller.png" onclick="zoom(this.src)" class="rounded-lg w-full cursor-pointer">
-                </div>
-            </div>
-
-            <div class="space-y-4 mb-10">
-                <div class="step-card" style="border-color:#a855f7">
-                    <p class="font-bold text-lg underline italic text-purple-200">Matin : Les Remparts</p>
-                    <p class="text-sm text-gray-400 italic">Vue panoramique depuis le Château. On domine toute la ville.</p>
-                </div>
-                <div class="step-card" style="border-color:#a855f7">
-                    <p class="font-bold text-lg underline italic text-purple-200">Midi : Picnic QG</p>
-                    <p class="text-sm text-gray-300 font-bold">Pique-nique sur l'herbe au milieu du château. Ambiance 100% étudiante.</p>
+    <div id="caen" class="hidden-section px-4 max-w-3xl mx-auto">
+        <div class="card bg-[#1a1a1a] text-white p-6 pl-12 rounded-[2rem] shadow-xl border border-purple-500/20">
+            
+            <h2 class="text-2xl font-bold text-purple-400 mb-8 italic -ml-6">🕒 LE PLANNING CAEN</h2>
+    
+            <p class="text-purple-300 font-black text-sm mb-4 tracking-wider uppercase -ml-6">MATIN : Médiéval & Panorama</p>
+            
+            <div class="step border-l-2 border-purple-500/30 pl-6 pb-6 relative">
+                <span class="time absolute -left-[35px] bg-purple-600 text-[10px] px-2 py-1 rounded font-bold">07h09</span>
+                <div class="step-content">
+                    Départ Rouen Rive-Droite 🚆 <span class="badge bg-purple-500/20 text-purple-300">Direct</span>
+                    <img src="Compo train/comp_caen_aller.png" class="w-full rounded-xl mt-3 border border-white/10" onclick="zoom(this.src)">
+                    <small class="text-gray-500 block mt-1 italic">Arrivée Caen 08:48. Sortie vers Place de la Gare.</small>
                 </div>
             </div>
-
-            <div class="space-y-6">
-                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest text-center italic border-b border-white/10 pb-2">🚂 3 Choix pour le Retour</h3>
-                <div class="train-card" style="border-color: rgba(168, 85, 247, 0.2);">
-                    <p class="text-[10px] uppercase font-bold text-gray-400 mb-2">Option A : 17:04 ➜ 18:47</p>
-                    <img src="Compo train/comp_caen_retour.png" onclick="zoom(this.src)" class="h-10 w-full object-contain cursor-pointer grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition">
+    
+            <div class="step border-l-2 border-purple-500/30 pl-6 pb-6 relative">
+                <span class="time absolute -left-[35px] bg-purple-600 text-[10px] px-2 py-1 rounded font-bold">09h15</span>
+                <div class="step-content">
+                    <strong>Quartier Vaugueux</strong> 🏰<br>
+                    <small class="text-gray-400 italic text-xs leading-tight">
+                        Prendre Tram T1/T2/T3 (Arrêt St-Pierre) ou 20 min de marche via l'Av. du 6 Juin.<br>
+                        Le spot "Harry Potter" : maisons à pans de bois et rues pavées.
+                    </small>
                 </div>
-                <div class="train-card" style="border-color: rgba(168, 85, 247, 0.2);">
-                    <p class="text-[10px] uppercase font-bold text-gray-400 mb-2">Option B : 18:03 ➜ 19:42</p>
-                    <img src="Compo train/comp_caen_retour.png" onclick="zoom(this.src)" class="h-10 w-full object-contain cursor-pointer grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition">
+            </div>
+    
+            <div class="step border-l-2 border-purple-500/30 pl-6 pb-8 relative">
+                <span class="time absolute -left-[35px] bg-gray-700 text-[10px] px-2 py-1 rounded font-bold">10h00</span>
+                <div class="step-content">
+                    <strong>Château de Caen</strong> 🛡️
+                    <img src="Images/Chateau Caen.jpg" class="w-full rounded-xl mt-2 border border-white/10" onclick="zoom(this.src)">
+                    <small class="text-gray-400 text-xs italic">Montée sur les remparts (Gratuit). Panorama sur l'Église St-Pierre.</small>
                 </div>
-                <div class="train-card border-2 border-purple-500/50 bg-purple-900/10">
-                    <p class="text-[10px] uppercase font-bold text-purple-400 mb-2">Option C (Max) : 19:16 ➜ 20:56 ★</p>
-                    <img src="Compo train/comp_caen_retour.png" onclick="zoom(this.src)" class="h-12 w-full object-contain cursor-pointer">
+            </div>
+    
+            <p class="text-blue-300 font-black text-sm mb-4 tracking-wider uppercase -ml-6">MIDI : L'EXPÉDITION MER</p>
+    
+            <div class="step border-l-2 border-blue-500/30 pl-6 pb-6 relative">
+                <span class="time absolute -left-[35px] bg-blue-600 text-[10px] px-2 py-1 rounded font-bold">11h15</span>
+                <div class="step-content">
+                    <strong>Bus Ligne 12 EXPRESS</strong> 🚌<br>
+                    <small class="text-gray-400 text-xs">
+                        Rendez-vous arrêt "Tour Leroy". Direction Ouistreham Riva-Bella.<br>
+                        Payez 1,60€ par CB sans contact sur le valideur.
+                    </small>
+                </div>
+            </div>
+    
+            <div class="step border-l-2 border-emerald-500/30 pl-6 pb-8 relative">
+                <span class="time absolute -left-[35px] bg-emerald-600 text-[10px] px-2 py-1 rounded font-bold">12h00</span>
+                <div class="step-content">
+                    <strong>Pique-nique à Ouistreham</strong> 🏖️
+                    <img src="Images/Plage Ouis.webp" class="w-full rounded-xl mt-2 border border-white/10" onclick="zoom(this.src)">
+                    <small class="text-gray-400 text-xs italic">Descendre à "Riva Centre". Chill face au phare et aux ferries.</small>
+                </div>
+            </div>
+    
+            <p class="text-yellow-300 font-black text-sm mb-4 tracking-wider uppercase -ml-6">APRÈS-MIDI : Phare & Riva-Bella</p>
+    
+            <div class="step border-l-2 border-yellow-500/30 pl-6 pb-6 relative">
+                <span class="time absolute -left-[35px] bg-yellow-600 text-[10px] px-2 py-1 rounded font-bold">14h30</span>
+                <div class="step-content">
+                    <strong>Avenue de la Mer & Jetée</strong><br>
+                    <small class="text-gray-400 text-xs">Shopping et balade jusqu'au bout de la jetée Paul-Émile Victor.</small>
+                </div>
+            </div>
+    
+            <p class="text-red-400 font-black text-sm mb-4 tracking-wider uppercase italic -ml-6">SOIR : 3 OPTIONS DE RETOUR</p>
+    
+            <div class="grid grid-cols-1 gap-4 mb-8 -ml-6">
+                <div class="p-4 bg-white/5 border border-white/10 rounded-2xl relative">
+                    <span class="absolute top-2 right-4 text-[10px] text-gray-500 font-bold uppercase italic">Option A</span>
+                    <p class="text-white font-bold text-lg">17:04 <span class="text-xs text-gray-500">➜</span> 18h47</p>
+                    <p class="text-[10px] text-gray-500 italic leading-tight">Retour direct. Bus 12 à "Riva Centre" vers 16:15.</p>
+                </div>
+    
+                <div class="p-4 bg-purple-900/10 border border-purple-500/30 rounded-2xl relative">
+                    <span class="absolute top-2 right-4 text-[10px] text-purple-400 font-bold uppercase italic font-black">Option B (+1h)</span>
+                    <p class="text-white font-bold text-lg">18:03 <span class="text-xs text-gray-500">➜</span> 19h42</p>
+                    <div class="mt-2 p-3 bg-black/30 rounded-xl border border-purple-500/20">
+                        <p class="text-[11px] text-purple-200 font-bold italic">💡 LE BASSIN ST-PIERRE</p>
+                        <p class="text-[10px] text-gray-400 leading-tight mt-1">Descendre du bus à "Résistance". Verre sur le port de plaisance avant le train.</p>
+                    </div>
+                </div>
+    
+                <div class="p-4 bg-purple-500/20 border-2 border-purple-500 rounded-2xl relative shadow-[0_0_20px_rgba(168,85,247,0.15)]">
+                    <span class="absolute top-2 right-4 text-[10px] text-white font-bold uppercase italic font-black">Option C (+2h) ★</span>
+                    <p class="text-white font-bold text-lg">19:16 <span class="text-xs text-gray-500">➜</span> 20h56</p>
+                    <div class="mt-2 p-3 bg-black/40 rounded-xl border border-white/10">
+                        <p class="text-[11px] text-purple-100 font-bold italic">💡 LES RIVES DE L'ORNE</p>
+                        <p class="text-[10px] text-gray-400 leading-tight mt-1">Directement devant la gare. Centre à ciel ouvert idéal pour le coucher de soleil.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="step border-l-2 border-red-500/30 pl-6 pb-2 relative">
+                <span class="time absolute -left-[35px] bg-red-600 text-[10px] px-2 py-1 rounded font-bold italic">FIN</span>
+                <div class="step-content">
+                    <img src="Compo train/comp_caen_retour.png" class="w-full rounded-xl mt-2 opacity-80" onclick="zoom(this.src)">
+                    <small class="text-red-400 block mt-1 text-[10px] font-bold">VÉRIFIER LE QUAI SUR L'APPLI SNCF !</small>
                 </div>
             </div>
         </div>
